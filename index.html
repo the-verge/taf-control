@@ -20,18 +20,18 @@
 
 		function createImage() {
 			var img = document.createElement('img');
-			img.src = "taf-logo-blue-64.png";
+			img.src = "taf-logo-64.png";
 			return img;
 		}
 
 	    function createCells() {
 	        var table = document.createElement("TABLE");
 
-	        for (var rows = 0; rows < 26; rows++) {
+	        for (var rows = 0; rows < 28; rows++) {
 	            var newRow = document.createElement("TR");
 	            table.appendChild(newRow);
 
-	            for (var cols = 0; cols < 26; cols++) {
+	            for (var cols = 0; cols < 27; cols++) {
 	                var newCell = document.createElement("TD");
 	                var img = createImage();
 	                if(rows % 2 === 0) {
@@ -44,7 +44,6 @@
 	                		newCell.appendChild(img);
 	                	}
 	                }
-	                //newCell.appendChild(img);
 	                newRow.appendChild(newCell);
 	            }
 	        }
@@ -55,12 +54,19 @@
 	    	return '#'+Math.floor(Math.random()*16777215).toString(16);
 	    }
 
+	    function pickColour() {
+	    	var colours = ["#7b0663","#e32119","#fabb00","#89ba17","#00a9d4", "#FFFFFF"];
+	    	var index = Math.floor(Math.random() * 6);
+	    	console.log(index)
+	    	return colours[index];
+	    }
+
 	    function iterateTable() {
 	    	setInterval(function(){
 		      	var tds = document.getElementsByTagName("td");
 				for(var i = 0; i < tds.length; i++) {
 					var cell = tds[i];
-					var colour = generateRandomColour();
+					var colour = pickColour();
 				   	cell.style.backgroundColor = colour;
 				}
 		    },1000);
